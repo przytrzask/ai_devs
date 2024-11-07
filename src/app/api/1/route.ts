@@ -6,7 +6,6 @@ import { openai } from "@ai-sdk/openai";
 import { generateText } from "ai";
 
 import FirecrawlApp from "@mendable/firecrawl-js";
-import { cons } from "effect/List";
 
 const siteUrl = "https://xyz.ag3nts.org/";
 
