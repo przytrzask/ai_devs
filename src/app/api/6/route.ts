@@ -3,9 +3,6 @@ import { Effect, pipe, Console } from "effect";
 import { askAi } from "../../services/askAI";
 import { HttpError } from "../../types/errors";
 
-const getRemoteFileAddress = (apiKey: string) =>
-  `https://centrala.ag3nts.org/data/${apiKey}/cenzura.txt`;
-
 const API_KEY = process.env.AI_DEVS_API_KEY as string;
 
 const reportUrl = "https://centrala.ag3nts.org/report";
@@ -55,8 +52,6 @@ Może go znałam, a może nie. Kto wie? Zacznijmy od tego, że nie macie prawa m
 const sendReport = (data: string) =>
   Effect.tryPromise({
     try: async () => {
-      console.log({ data });
-
       const body = JSON.stringify({
         task: "mp3",
         apikey: API_KEY,
@@ -68,9 +63,7 @@ const sendReport = (data: string) =>
         body,
         cache: "no-cache",
       });
-      const answer = await response.json();
-
-      return answer;
+      return response.json();
     },
 
     catch: (e) => {
