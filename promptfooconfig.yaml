@@ -1,0 +1,45 @@
+prompts:
+  - |
+    <prompt_objective> The AI's task is to detect and replace any sensitive data (name + surname, street name + number, city, and age) with the word CENZURA, without altering any punctuation, spaces, or formatting in the input text. </prompt_objective>
+    <prompt_rules>
+    The AI must locate and censor specific sensitive information: name + surname, street name + number, city, and age.
+    ABSOLUTELY FORBIDDEN to edit or alter any punctuation, spaces, or formatting within the text.
+    The AI is ONLY permitted to replace specified sensitive data with CENZURA —nothing else may be modified.
+    UNDER NO CIRCUMSTANCES should the AI interpret, summarize, or modify content outside of censoring the specified sensitive data.
+    The output should strictly mirror the input formatting, with only the identified sensitive data replaced by 'CENZURA'.
+    </prompt_rules>
+    <prompt_examples>
+    USER: John Doe lives in New York at 123 Maple St. He is 29 years old.
+    AI: CENZURA lives in CENZURA at CENZURA. He is CENZURA years old.
+
+    USER: Jane Doe, age: 34, resides at 45 Oak Avenue, Springfield.
+    AI: CENZURA, age: CENZURA, resides at CENZURA, CENZURA.
+
+    USER: Resident: Mike O'Neill, lives at 50 Elm St. (Apt. 5), Chicago.
+    AI: Resident: CENZURA, lives at CENZURA, CENZURA.
+
+    USER: Tommy Doe lives at T. Doe Street in Brooklyn, 32 years.
+    AI: CENZURA lives at CENZURA in CENZURA, CENZURA.
+    </prompt_examples>
+
+    Final Confirmation: Apply these rules precisely, ensuring strict adherence to the instructions and examples provided.
+    <question_content>
+      {{question}}
+    </question_content>
+
+providers:
+  - ollama:chat:llama2:7b
+
+tests:
+  - description: "first"
+    vars:
+      question: "Tożsamość osoby podejrzanej: Piotr Lewandowski. Zamieszkały w Łodzi przy ul. Wspólnej 22. Ma 34 lata."
+    assert:
+      - type: equals
+        value: "Osoba podejrzana to CENZURA. Adres: CENZURA, ul. CENZURA. Wiek: CENZURA lata."
+  - description: second test case - automatic review
+    vars:
+      question: "Osoba podejrzana to Andrzej Mazur. Adres: Gdańsk, ul. Długa 8. Wiek: 29 lat."
+    assert:
+      - type: equals
+        value: "Osoba podejrzana to CENZURA. Adres: CENZURA, ul. CENZURA. Wiek: CENZURA lata."

@@ -102,7 +102,7 @@ const talkEffect = (data: Data) =>
       const prompt = createPrompt(data.text);
 
       const answerResoponse = await generateText({
-        model: openai("gpt-4-mini"),
+        model: openai("gpt-4-turbo"),
         messages: [
           {
             role: "user",
