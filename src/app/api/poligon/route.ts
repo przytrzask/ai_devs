@@ -1,11 +1,7 @@
+import { Data } from "@/app/schema/schema";
 import { Effect, Schema, Either, pipe } from "effect";
 
 const RawString = Schema.String;
-
-const Data = Schema.Struct({
-  message: Schema.String,
-  code: Schema.Number,
-});
 
 const rawdataEndpointAddress = "https://poligon.aidevs.pl/dane.txt";
 const verifyEndpointAddress = "https://poligon.aidevs.pl/verify";

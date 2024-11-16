@@ -6,8 +6,6 @@ const LLAMA_URL = "http://localhost:11434/api/generate";
 export const askLlama = (question: string) =>
   Effect.tryPromise({
     try: async () => {
-      console.log({ question });
-
       const response = await fetch(
         LLAMA_URL,
 

@@ -8,6 +8,7 @@ export const askAi = (prompt: string) =>
     try: async () => {
       const answerResoponse = await generateText({
         model: openai("gpt-4o-mini"),
+        temperature: 0,
         messages: [
           {
             role: "user",

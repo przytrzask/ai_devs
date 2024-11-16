@@ -53,10 +53,6 @@ const sendFormEffect = ({ username, password }: UserFormData) => {
       ],
     });
 
-    // console.log({ data, messages: result.response.messages });
-
-    // return result.response.messages;
-
     const answer = result.response.messages[0].content[0] as string;
 
     const formData = new URLSearchParams({
@@ -65,21 +61,12 @@ const sendFormEffect = ({ username, password }: UserFormData) => {
       answer: answer.text,
     });
 
-    console.log({
-      answer: answer.text,
-      formData: formData.toString(),
-    });
-
     const formSubmitResponse = await fetch(siteUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: formData.toString(),
-    });
-
-    console.log({
-      formSubmitResponse,
     });
 
     const res = await formSubmitResponse.text();
