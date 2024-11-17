@@ -29,8 +29,6 @@ export const ReportData = Schema.Struct({
 const sendReport = (data: any) =>
   Effect.tryPromise({
     try: async () => {
-      console.log({ data });
-
       const body = JSON.stringify({
         task: "kategorie",
         apikey: API_KEY,

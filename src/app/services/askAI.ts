@@ -7,7 +7,7 @@ export const askAi = (prompt: string) =>
   Effect.tryPromise({
     try: async () => {
       const answerResoponse = await generateText({
-        model: openai("gpt-4o-mini"),
+        model: openai("gpt-4o"),
         temperature: 0,
         messages: [
           {
@@ -17,10 +17,15 @@ export const askAi = (prompt: string) =>
         ],
       });
 
-      return answerResoponse.response.messages[0].content[0]?.text as string;
+      const text = answerResoponse.response.messages[0].content[0]
+        ?.text as string;
+
+      return text;
     },
 
     catch: (e) => {
+      console.log({ e });
+
       return new HttpError(e);
     },
   });

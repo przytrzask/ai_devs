@@ -15,6 +15,12 @@ transcript text from image
 </prompt_rules>
 `;
 
+const describeImagePrompt = `
+<prompt_objective>
+describe image 
+</prompt_objective>
+`;
+
 export const transcriptAudio = (audioPath: string) => {
   return Effect.tryPromise({
     try: async () => {
@@ -54,55 +60,45 @@ export const transcriptAudio = (audioPath: string) => {
   });
 };
 
-export const transcriptImage = (imagePath: string) => {
-  return Effect.tryPromise({
-    try: async () => {
-      const fileBuffer = fs.readFileSync(imagePath);
-      const base64Image = fileBuffer.toString("base64");
+export const transcriptImage = async (imagePath: string) => {
+  const fileBuffer = fs.readFileSync(imagePath);
+  const base64Image = fileBuffer.toString("base64");
 
-      const response = await fetch(
-        "https://api.openai.com/v1/chat/completions",
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4o",
+      messages: [
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: "gpt-4o",
-            messages: [
-              {
-                role: "user",
-                content: [
-                  {
-                    type: "text",
-                    text: transcriptPrompt,
-                  },
-                  {
-                    type: "image_url",
-                    image_url: {
-                      url: `data:image/jpeg;base64,${base64Image}`,
-                    },
-                  },
-                ],
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: transcriptPrompt,
+            },
+            {
+              type: "image_url",
+              image_url: {
+                url: `data:image/jpeg;base64,${base64Image}`,
               },
-            ],
-            max_tokens: 300,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      return {
-        transcript: data.choices[0].message.content as string,
-        fileName: imagePath.split("/").pop() as string,
-      };
-    },
-    catch: (e) => {
-      return Effect.fail(new HttpError(e));
-    },
+            },
+          ],
+        },
+      ],
+      max_tokens: 300,
+    }),
   });
+
+  const data = await response.json();
+
+  return {
+    transcript: data.choices[0].message.content as string,
+    fileName: imagePath.split("/").pop() as string,
+  };
 };
 
 export const transcriptText = (textPath: string) => {
@@ -145,3 +141,137 @@ export const classify = (prompt: string, fileName: string) =>
       return new HttpError(e);
     },
   });
+
+export const transcriptRemoteImage = async (
+  imageUrl: string
+): Promise<{
+  transcript: string;
+  fileName: string;
+}> => {
+  try {
+    // Fetch and convert remote image to base64
+    const response = await fetch(imageUrl);
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const base64Image = buffer.toString("base64");
+
+    const response2 = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: [
+            {
+              role: "user",
+              content: [
+                {
+                  type: "text",
+                  text: describeImagePrompt,
+                },
+                {
+                  type: "image_url",
+                  image_url: {
+                    url: `data:image/jpeg;base64,${base64Image}`,
+                  },
+                },
+              ],
+            },
+          ],
+          max_tokens: 300,
+        }),
+      }
+    );
+
+    const data = await response2.json();
+
+    return {
+      transcript: data.choices[0].message.content as string,
+      fileName: imageUrl.split("/").pop() as string,
+    };
+  } catch (e) {
+    throw new HttpError(e);
+  }
+};
+
+export const transcriptAudioPromise = async (
+  audioPath: string
+): Promise<{
+  transcript: string;
+  fileName: string;
+}> => {
+  try {
+    console.log({ audioPath });
+
+    const fileBuffer = fs.readFileSync(audioPath);
+    const audioBlob = new Blob([fileBuffer]);
+
+    const formData = new FormData();
+    formData.append("file", audioBlob, "audio.mp3");
+    formData.append("model", "whisper-1");
+    formData.append("response_format", "text");
+
+    const response = await fetch(
+      "https://api.openai.com/v1/audio/transcriptions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        },
+        body: formData,
+      }
+    );
+
+    const data = await response.text();
+
+    return {
+      transcript: data,
+      fileName: audioPath.split("/").pop() as string,
+    };
+  } catch (e) {
+    throw new HttpError(e);
+  }
+};
+
+export const transcriptRemoteAudio = async (
+  audioUrl: string
+): Promise<{
+  transcript: string;
+  fileName: string;
+}> => {
+  try {
+    // Fetch remote audio file
+    const response = await fetch(audioUrl);
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBlob = new Blob([arrayBuffer], { type: "audio/mpeg" });
+
+    const formData = new FormData();
+    formData.append("file", audioBlob, "audio.mp3");
+    formData.append("model", "whisper-1");
+    formData.append("response_format", "text");
+
+    const transcriptionResponse = await fetch(
+      "https://api.openai.com/v1/audio/transcriptions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        },
+        body: formData,
+      }
+    );
+
+    const data = await transcriptionResponse.text();
+
+    return {
+      transcript: data,
+      fileName: audioUrl.split("/").pop() as string,
+    };
+  } catch (e) {
+    throw new HttpError(e);
+  }
+};

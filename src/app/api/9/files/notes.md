@@ -37,13 +37,18 @@ Wszystko to, rzecz jasna, pozostaje na razie w sferze hipotez. Dotychczasowe eks
 
 W jednym z naszych najbardziej spektakularnych testów udało się przesłać obraz fotograficzny do przeszłości z zachowaniem wyjątkowej dokładności i stabilności danych. W eksperymencie, który odbył się na rynku, zespół badaczy wykonał zdjęcie zachodzącego słońca o godzinie 19:42. W celu zmniejszenia rozmiaru przesyłanych danych, zdjęcie zostało wykonane w formacie monochromatycznym.
 
-![Image 1](https://centrala.ag3nts.org/dane/i/rynek.png)
+### Image Transcription
+
+The image is a black and white photograph of a cobblestone square at sunrise or sunset. Silhouettes of buildings and a clock tower are visible in the background. Birds are flying in the sky and walking on the ground. A group of people is gathered in the distance, surrounded by the dramatic sky filled with clouds. The scene conveys a peaceful, yet dynamic atmosphere.
+looks like crackow
 
 Orygionalne zdjęcie. Widok na kościół od strony 'Adasia'
 
 Wykorzystując zaawansowaną technologię transmisji temporalnej, dane zostały przetworzone i zapisane na karcie pamięci z odczytem czasowym wskazującym godzinę 16:08 tego samego dnia – ponad trzy godziny przed faktycznym wykonaniem fotografii. Pomimo precyzyjnej kalibracji i wzmocnienia sygnału, obraz uległ niewielkiemu uszkodzeniu, ujawniając drobne zakłócenia i artefakty widoczne w prawej części zdjęcia.
 
-![Image 2](https://centrala.ag3nts.org/dane/i/rynek_glitch.png)
+### Image Transcription
+
+The image displays a black and white scene of a cobblestone square at sunset, with silhouettes of buildings and a clock tower in the background. There are people walking and birds scattered on the ground, with more birds flying in the sky. The image has a glitch effect with vertical colored lines on the right side. The overall atmosphere is serene and picturesque.
 
 Uszkodzenia widoczne w odtworzonym pliku graficznym
 
@@ -53,11 +58,15 @@ Wynik ten jednak nadal wskazuje na rosnący potencjał przesyłania kompleksowyc
 
 Jednym z bardziej ambitnych eksperymentów była próba transmisji materii – w tym przypadku owocu. Choć przesył wydawał się sukcesem, przy dokładniejszym zbadaniu okazało się, że owoc dotarł na miejsce bez pestek, które zniknęły podczas procesu przesyłu. Co ciekawe, pestek nigdy nie odnaleziono, co sugeruje, że transmisja wciąż wymaga udoskonalenia, by zapewnić pełną integralność przesyłanych obiektów.
 
-![Image 3](https://centrala.ag3nts.org/dane/i/fruit01.png)
+### Image Transcription
+
+The image is a black-and-white photograph of a strawberry placed on a reflective surface. The strawberry has visible texture with droplets of water on its surface. In the background, there is a blurred indoor setting with indistinct objects, possibly kitchen items. The focus is on the strawberry, emphasizing its shape and details.
 
 Owoc przed transportem w czasie
 
-![Image 4](https://centrala.ag3nts.org/dane/i/fruit02.png)
+### Image Transcription
+
+The image is a black and white photograph of a strawberry placed on a metallic surface. The strawberry is upright with its leaves visible on top. In the background, there are some blurred objects, including a clear plastic container. The lighting creates a shadow of the strawberry on the surface.
 
 Owoc pozbawiony pestek po transporcie
 
@@ -87,7 +96,9 @@ W pierwszych próbach przesyłania wielu obiektów zespół zmierzył się z nie
 
 Zamiast dwóch oddzielnych owoców, w miejscu docelowym pojawiał się jeden, wykazujący cechy zarówno wyglądu, jak i smaku obu przesłanych elementów. W ten sposób “przemieszany” owoc zawierał części wspólne obu pierwotnych struktur, co wskazuje na spontaniczne fuzje na poziomie komórkowym podczas procesu transmisji.
 
-![Image 5](https://centrala.ag3nts.org/dane/i/strangefruit.png)
+### Image Transcription
+
+The image shows a black and white photograph of a fruit that resembles a cherry but has the texture of a strawberry. It is heart-shaped, with a reflective surface and a long stem emerging from the top. The texture includes small dots that mimic the seeds of a strawberry.
 
 Fuzja kodu genetycznego dwóch transportowanych owoców
 
@@ -131,7 +142,9 @@ Według zapisów monitoringu, Bomba starannie przygotował ustawienia modułu ko
 
 Wydaje się, że Bomba przestrzegał protokołów konfiguracyjnych; ręcznie zdefiniował liczbę obiektów wejściowych na „jedna sztuka” oraz liczbę obiektów wyjściowych na „jedna sztuka”. Wnosząc dodatkowy przedmiot, którego resztki znaleziono później na stole przy maszynie, laborant wszedł do komory, co zarejestrowały kamery bezpieczeństwa.
 
-![Image 6](https://centrala.ag3nts.org/dane/i/resztki.png)
+### Image Transcription
+
+The image is a black and white photo of a plate with several sliced pieces of pizza. The toppings appear to include pineapple chunks and possibly herbs or spices scattered on top. The pizza slices are arranged in a circular pattern on the plate.
 
 Resztki jedzenia znalezione w pobliżu komory temporalnej.  
 Ciasto było jeszcze ciepłe i chrupiące.
@@ -152,7 +165,9 @@ Przeprowadzone symulacje wskazują, że takie zakłócenia mogły wywołać nieo
 
 Na miejscu zdarzenia znaleziono dyktafon z jednym plikiem dźwiękowym. Nie wiemy dlaczego Bomba przygotowywał nagranie i kto miał być jego odbiorcą.
 
-[rafal_dyktafon.mp3](https://centrala.ag3nts.org/dane/i/rafal_dyktafon.mp3)
+### Audio Transcription
+
+No i co teraz? No to teraz mnie już nie powstrzymacie. Jesteśmy tutaj sami. I trzeba tylko wykonać plan. Jak ja się do tego w ogóle zmieszczę? W sumie dobrze zaplanowałem powstrzymanie. Adam miał rację. Jedna informacja powinna się nam w czasie. Jedna informacja. Dwa lata wcześniej. Posunie całe badania do przodu i wtedy już będzie z górki. Czekaj, na odwagę. Z truskawką. Mowę nie wywoła. Ale z ludźmi? Dobra, jedna myfa mowę pewnie wywoła. Ale Adam mówi, że to jest stabilne. Że to się wszystko uda. Trzeba tylko cofnąć się w czasie. Jeden i jedyny raz. Do Grudziądza. Znaleźć hotel. Ile może być hoteli w Grudziądzu? Ja nie wiem, ale na pewno znajdę jeden. I potem czekać. Spokojnie czekać dwa lata. Tyle jestem w stanie zrobić. Resztę mam zapisane na kartce. No to co? No to siup. Wpisujemy. Czekajcie. Koordynaty są Grudziądz. Dobra. Batman nie wchodzi. A jest w menu. Człowiek. Dobra. Jeszcze gry. Wezmę ze sobą trochę. Dobra. Jestem gotowy. Jeszcze jedno. Na odwagę. Tak na cześć. O to by nie wszedł. Nie. Dobra. Naciskamy. Czekamy. To licz szybciej. Ile można czekać? Człowieku. Jestem gotowy. No to bziom.
 
 Istniała realna obawa, że incydent ten zakończył się śmiercią Bomby lub że w najlepszym razie przemieścił się on w czasie w formie organizmu, który nie przypomina już swojego pierwowzoru. Incydent ten stanowi ostrzeżenie dla zespołu badawczego i podkreśla potrzebę ścisłej kontroli nad procesem transmisji temporalnej oraz wyeliminowania ryzyka przypadkowej fuzji obiektów.
 
