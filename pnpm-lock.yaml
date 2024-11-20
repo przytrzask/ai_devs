@@ -14,6 +14,9 @@ importers:
       '@mendable/firecrawl-js':
         specifier: ^1.7.2
         version: 1.7.2(ws@8.18.0)
+      '@microsoft/tiktokenizer':
+        specifier: ^1.0.9
+        version: 1.0.9
       ai:
         specifier: ^3.4.33
         version: 3.4.33(openai@4.71.1(zod@3.23.8))(react@18.3.1)(sswr@2.1.0(svelte@5.1.9))(svelte@5.1.9)(vue@3.5.12(typescript@5.4.5))(zod@3.23.8)
@@ -614,6 +617,10 @@ packages:
 
   '@mendable/firecrawl-js@1.7.2':
     resolution: {integrity: sha512-kmTnvPc1PkOO1BreSvDKGVHeYLiEX3NsiR3R8QfePRkg5t6Lbad35MYBHjZJolrsNvl0yjXYOEaZEgsF/MPkkw==}
+
+  '@microsoft/tiktokenizer@1.0.9':
+    resolution: {integrity: sha512-rl8G2WVLfLVxzQR0uVn//Wl3SUQNYgQg0ML4e0Dvx7CDTl/cvi33yiVt7CJ35e9igSkVmQMOg7/J/Wo0unw0Kg==}
+    engines: {node: '>=18.0.0'}
 
   '@msgpack/msgpack@3.0.0-beta2':
     resolution: {integrity: sha512-y+l1PNV0XDyY8sM3YtuMLK5vE3/hkfId+Do8pLo/OPxfxuFAUwcGz3oiiUuV46/aBpwTzZ+mRWVMtlSKbradhw==}
@@ -5118,6 +5125,8 @@ snapshots:
     transitivePeerDependencies:
       - debug
       - ws
+
+  '@microsoft/tiktokenizer@1.0.9': {}
 
   '@msgpack/msgpack@3.0.0-beta2': {}
 

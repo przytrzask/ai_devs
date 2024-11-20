@@ -39,8 +39,7 @@ W jednym z naszych najbardziej spektakularnych testów udało się przesłać ob
 
 ### Image Transcription
 
-The image is a black and white photograph of a cobblestone square at sunrise or sunset. Silhouettes of buildings and a clock tower are visible in the background. Birds are flying in the sky and walking on the ground. A group of people is gathered in the distance, surrounded by the dramatic sky filled with clouds. The scene conveys a peaceful, yet dynamic atmosphere.
-looks like crackow
+The image is a black and white photograph of a cobblestone square at sunrise or sunset. Silhouettes of buildings and a clock tower are visible in the background. Birds are flying in the sky and walking on the ground. A group of people is gathered in the distance, surrounded by the dramatic sky filled with clouds. The scene conveys a peaceful.
 
 Orygionalne zdjęcie. Widok na kościół od strony 'Adasia'
 

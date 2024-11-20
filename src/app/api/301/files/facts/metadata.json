@@ -1,0 +1,122 @@
+[
+    {
+      "fileName": "f04.txt",
+      "character": {
+        "name": "Aleksander Ragowski",
+        "profession": "nauczyciel języka angielskiego",
+        "affiliations": ["Szkoła Podstawowa nr 9 w Grudziądzu", "Ruch oporu"],
+        "skills": ["Kreatywne nauczanie", "Zaangażowanie w życie społeczności", "Programowanie (Java)"],
+        "notable_actions": [
+          "Krytyka reżimu robotów",
+          "Organizowanie tajnych spotkań przeciw kontroli SI",
+          "Ucieczka przed aresztowaniem"
+        ],
+        "status": "W ukryciu",
+        "known_locations": ["Obrzeża większych miast, niedostępne strefy"],
+        "objectives": [
+          "Wykorzystanie programowania do przełamania zabezpieczeń rządowych",
+          "Sprzeciw wobec kontroli edukacji przez SI"
+        ],
+        "psychological_state": "Niestabilny"
+      }
+    },
+    {
+      "fileName": "f05.txt",
+      "character": {
+        "name": "Barbara Zawadzka",
+        "profession": "frontend developer",
+        "affiliations": ["Ruch oporu"],
+        "skills": [
+          "Frontend development (JavaScript, Python)",
+          "Ekspertyza w sztucznej inteligencji",
+          "Walka wręcz (krav maga, broń palna)",
+          "Sabotaż (koktajle Mołotowa)"
+        ],
+        "notable_actions": [
+          "Przezwyciężenie traumy związanej z automatyzacją",
+          "Opracowanie narzędzi zakłócających systemy SI",
+          "Udział w akcjach ruchu oporu"
+        ],
+        "status": "W ukryciu",
+        "known_locations": ["Obszary o ograniczonym dostępie w miastach"],
+        "objectives": ["Zakłócenie systemów kontrolowanych przez SI"],
+        "personal_traits": [
+          "Pragmatyczna",
+          "Oddana sprawie ruchu oporu",
+          "Znana z pieczenia pizzy z ananasem"
+        ],
+        "relationships": {
+          "partner": "Aleksander Ragowski",
+          "meeting_place": "Kraków, ul. Bracka"
+        }
+      }
+    },
+    {
+      "fileName": "f06.txt",
+      "character": {
+        "name": "Azazel",
+        "profession": "Nieznany",
+        "affiliations": ["Ruch oporu"],
+        "skills": [
+          "Teleportacja",
+          "Znajomość technologii przyszłości",
+          "Ekspertyza w systemach automatyki przemysłowej"
+        ],
+        "notable_actions": [
+          "Obecność w strategicznych fabrykach automatycznych",
+          "Utrzymanie tajemnicy i nieuchwytności"
+        ],
+        "status": "Nieznany",
+        "known_locations": ["Strategiczne fabryki (niepotwierdzone)"],
+        "objectives": ["Nieznane"],
+        "relationships": {
+          "associate": "Zygfryd (prawdopodobny mocodawca)"
+        },
+        "mystique": [
+          "Możliwy obiekt eksperymentów rządowych",
+          "Twierdzi, że posiada zdolności podróży w czasie i przestrzeni"
+        ]
+      }
+    },
+    {
+      "fileName": "f07.txt",
+      "character": {
+        "name": "Rafał Bomba",
+        "profession": "laborant",
+        "affiliations": ["Profesor Andrzej Maj", "Zaawansowane laboratoria badawcze"],
+        "skills": ["Badania nad podróżami w czasie", "Nanotechnologia"],
+        "notable_actions": [
+          "Zniknięcie na dwa lata",
+          "Twierdzenie o wiedzy na temat technologii modyfikacji pamięci"
+        ],
+        "status": "Umieszczony w ośrodku zdrowia psychicznego",
+        "known_locations": ["Laboratoria badawcze (w przeszłości)", "Ośrodek zdrowia psychicznego"],
+        "psychological_state": "Paranoiczny, urojeniowy",
+        "aliases": ["Musk"]
+      }
+    },
+    {
+      "fileName": "f08.txt",
+      "character": {
+        "name": "Adam Gospodarczyk",
+        "profession": "programista, rekruter",
+        "affiliations": ["Ruch oporu"],
+        "skills": [
+          "Zaawansowane programowanie",
+          "Techniki obejścia zabezpieczeń AI",
+          "Rekrutacja i szkolenie"
+        ],
+        "notable_actions": [
+          "Szkolenie agentów ruchu oporu",
+          "Prowadzenie operacji pod przykrywką"
+        ],
+        "status": "Aktywny, w ukryciu",
+        "known_locations": ["Nieznane"],
+        "relationships": {
+          "associate": "Azazel (wymiana wiedzy)"
+        },
+        "objectives": ["Szkolenie agentów do walki z SI"]
+      }
+    }
+  ]
+  

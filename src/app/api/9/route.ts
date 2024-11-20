@@ -200,8 +200,8 @@ const extractAudioAndTranscript = (fileContents: string) =>
 const program = pipe(
   Effect.succeed(notesPath),
   Effect.flatMap((path) => readFile(path)),
-  //   Effect.flatMap((f) => extractImagesAndTranscript(f)),
-  //   Effect.flatMap((f) => extractAudioAndTranscript(f)),
+  Effect.flatMap((f) => extractImagesAndTranscript(f)),
+  Effect.flatMap((f) => extractAudioAndTranscript(f)),
   Effect.flatMap((ctx) => askAi(generalPrompt(ctx))),
   Effect.flatMap((data) => sendReport(data, "arxiv")),
   Effect.tap(Console.log)

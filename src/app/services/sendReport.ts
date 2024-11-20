@@ -15,19 +15,13 @@ console.log({ AI_DEVS_API_KEY, reportUrl });
 export const sendReport = (data: any, task: string) =>
   Effect.tryPromise({
     try: async () => {
-      console.log({ data, task });
-
-      const parsed = JSON.parse(data);
-
-      console.log({ parsed });
-
-      console.log(typeof parsed);
-
       const body = JSON.stringify({
         task,
         apikey: AI_DEVS_API_KEY,
-        answer: parsed,
+        answer: data,
       });
+
+      console.log({ body });
 
       const response = await fetch(reportUrl, {
         method: "POST",
