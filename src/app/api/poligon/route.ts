@@ -1,4 +1,4 @@
-import { Data } from "@/app/schema/schema";
+import { Data } from "@/app/api/302/schema/schema";
 import { Effect, Schema, Either, pipe } from "effect";
 
 const RawString = Schema.String;

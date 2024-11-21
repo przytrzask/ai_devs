@@ -3,7 +3,7 @@ import { Effect, pipe, Console, Schema, Either } from "effect";
 import { askAi } from "../../services/askAI";
 import { HttpError, ValidationError } from "../../types/errors";
 import { generateImage } from "@/app/services/generateImage";
-import { Data } from "@/app/schema/schema";
+import { Data } from "@/app/api/302/schema/schema";
 
 const API_KEY = process.env.AI_DEVS_API_KEY as string;
 

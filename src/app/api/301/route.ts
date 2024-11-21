@@ -1,6 +1,6 @@
-import { Effect, pipe, Console, Schema, Array, Option, Either } from "effect";
+import { Effect, pipe, Console, Schema } from "effect";
 import { openai } from "@ai-sdk/openai";
-import { generateText, generateObject } from "ai";
+import { generateObject } from "ai";
 import { z } from "zod";
 import fs, { readdir } from "node:fs";
 
@@ -204,7 +204,7 @@ export const askAi = (prompt: string, userPrompt: string) =>
   Effect.tryPromise({
     try: async () => {
       const answerResoponse = await generateObject({
-        model: openai("gpt-4o"),
+        model: openai("gpt-4o-mini"),
         temperature: 0,
         output: "object",
         schema: z.record(z.string(), z.string()),

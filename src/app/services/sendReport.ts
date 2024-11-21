@@ -15,6 +15,8 @@ console.log({ AI_DEVS_API_KEY, reportUrl });
 export const sendReport = (data: any, task: string) =>
   Effect.tryPromise({
     try: async () => {
+      console.log(data);
+
       const body = JSON.stringify({
         task,
         apikey: AI_DEVS_API_KEY,
