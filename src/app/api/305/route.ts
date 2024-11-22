@@ -26,14 +26,18 @@ Aktualne miejsce pobytu Barbary Zawadzkiej nie jest znane. Przypuszczamy jednak,
 </note>
 
 2. Extract all person names and city names mentioned in the note
-3. For each person name found:
+
+1. For each person name found:
    - Search the people  by making a getPeople request with {"query": "[PERSON_NAME]"}
    - Note any cities or additional persons mentioned in the results
-4. For each city name found:
+2. For each city name found:
    - Search the places  by making a getPlaces request with {"query": "[CITY_NAME]"}
    - Note any persons mentioned in the results
-5. Continue this process recursively with any new names or cities discovered
-6. When you find Barbara Zawadzka's location, return it in this format:
+3. Continue this process recursively with any new names or cities discovered
+4. Search all people by name 
+5. dont skip any name 
+6. search all places by name
+7. When you find current Barbara Zawadzka's location, return it in this format:
    \`\`\`json
    {"city": "[CITY_NAME]"}
    \`\`\`
@@ -49,6 +53,8 @@ Important:
 - Look for patterns that might reveal Barbara's location
 - Put all the data together and fill in the missing information.
 - Remember that some data might be incomplete or missing
+- check FROMBORK and KONIN as well
+- check person GLITCH - result of place KONIN search
 
 Begin your investigation and report your findings step by step. For each step, explain your reasoning and what new information you've discovered.`;
 
@@ -60,6 +66,9 @@ const askAgent = (prompt: string) =>
         maxSteps: 100,
         temperature: 1,
         prompt,
+        onStepFinish: (step) => {
+          console.log(step.text);
+        },
         tools: {
           getPeople: {
             description: "Make an HTTP POST request to find people",
@@ -67,8 +76,6 @@ const askAgent = (prompt: string) =>
               query: z.string().describe(""),
             }),
             execute: async ({ query }) => {
-              console.log("getPeople", query);
-
               const response = await fetch(
                 "https://centrala.ag3nts.org/people",
                 {

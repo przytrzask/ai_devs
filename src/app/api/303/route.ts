@@ -12,16 +12,6 @@ const AI_DEVS_API_KEY = process.env.AI_DEVS_API_KEY;
 
 const prompt = `
 <system>
-  <api>
-  https://centrala.ag3nts.org/apidb
-  </api>
-  <request_format>
-   {
-    "task": "database",
-    "apikey": ${AI_DEVS_API_KEY},
-    "query": "select * from users limit 1"
-   }
-  </request_format>
 
   <commands>
   show tables = returns list of tables
@@ -87,18 +77,14 @@ const askAgent = (prompt: string) =>
     catch: (e) => Effect.fail(e),
   });
 
-const programDate = (date: string) =>
+const programDatabaseSearch = () =>
   pipe(
     askAgent(prompt),
-    Effect.tap(Console.log),
     Effect.flatMap((data) => sendReport(data, "database"))
   );
 
 export async function GET() {
-  return Effect.runPromise(
-    // processDocuments(REPORTS_PATH)
-    programDate("")
-  ).then((data) => {
+  return Effect.runPromise(programDatabaseSearch()).then((data) => {
     return new Response(JSON.stringify({ data }), {
       status: 200,
     });
