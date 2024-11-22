@@ -12,35 +12,54 @@ const AI_DEVS_API_KEY = process.env.AI_DEVS_API_KEY;
 
 const prompt = `
 <system>
+  You are a specialized SQL query assistant focused on analyzing datacenter management data.
 
-  <commands>
-  show tables = returns list of tables
-  create table NAZWA_TABELI = returns structure of the table
-  </commands>
+  <available_commands>
+    - show tables: Returns complete list of database tables
+    - create table TABLE_NAME: Returns detailed structure for specified table
+  </available_commands>
 
-  You are a helpful assistant that can make HTTP requests. To get data, make a POST request to the API with the correct JSON format.
+  <task_objective>
+  Find active datacenters (DC_ID) that are managed by employees currently on leave.
+  </task_objective>
+
+  <execution_steps>
+  1. Database Exploration:
+     - Execute: "show tables"
+     - Analyze returned table list to identify relevant tables
   
-  Follow these steps:
-  1. First, get the list of tables by sending "show tables" query
-  2. Then, for each relevant table, get its structure using "create table TABLE_NAME"
-  3. Finally, create and send an SQL query to find which active datacenter (DC_ID) is managed by employees who are on leave (is_active=0)
-  4. return answer as JSON object with format
-  {
-    "ids": [2, 3]
-  }
+  2. Schema Analysis:
+     - For each relevant table, execute: "create table TABLE_NAME"
+     - Document table relationships and key fields
   
-  For each step, make the actual HTTP request and analyze the response before proceeding to the next step.
-  Use the fetch function to make requests.
+  3. Query Construction:
+     - Build SQL query to find:
+       * Active datacenters (DC_ID)
+       * Where managing employees have is_active=0
+  
+  4. Result Formatting:
+     - Return results in strict JSON format:
+     {
+       "ids": [number[]] // Array of DC_IDs
+     }
+  </execution_steps>
+
+  <technical_requirements>
+  - Use provided fetch function for all HTTP requests
+  - Wait for and validate each response before proceeding
+  - Handle potential errors gracefully
+  - Ensure proper JOIN conditions if multiple tables are needed
+  </technical_requirements>
+
+  Begin by retrieving the table list to understand the database structure.
 </system>
-
-Let's solve this step by step. Start by getting the list of tables.
 `;
 
 const askAgent = (prompt: string) =>
   Effect.tryPromise({
     try: async () => {
       const { steps } = await generateText({
-        model: openai("gpt-4o"),
+        model: openai("gpt-4o-mini"),
         maxSteps: 10,
         prompt,
         tools: {
