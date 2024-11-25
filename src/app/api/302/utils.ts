@@ -1,3 +1,4 @@
+import { Effect } from "effect";
 import { Document } from "./schema";
 
 type DocumentContent = Pick<Document, "title" | "description" | "date">;
@@ -18,3 +19,13 @@ const parseFileName = (fileName: string): Date => {
   const [year, month, day] = fileName.replace(".txt", "").split("_");
   return new Date(Number(year), Number(month) - 1, Number(day));
 };
+
+export const toJSON = (data: string) =>
+  Effect.tryPromise({
+    try: async () => {
+      return await JSON.parse(data);
+    },
+    catch: (error) => {
+      return Effect.fail(error);
+    },
+  });

@@ -275,3 +275,10 @@ export const transcriptRemoteAudio = async (
     throw new HttpError(e);
   }
 };
+
+export const readFile = (path: string, fileName: string) =>
+  Effect.async<string, NodeJS.ErrnoException | null>((resume) => {
+    fs.readFile(`${path}/${fileName}`, "utf8", (error, data) => {
+      resume(error ? Effect.fail(error) : Effect.succeed(data));
+    });
+  });

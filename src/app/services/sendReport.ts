@@ -10,8 +10,6 @@ const reportData = Schema.Struct({
   code: Schema.Number,
 });
 
-console.log({ AI_DEVS_API_KEY, reportUrl });
-
 export const sendReport = (data: any, task: string) =>
   Effect.tryPromise({
     try: async () => {

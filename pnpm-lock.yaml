@@ -32,6 +32,9 @@ importers:
       effect:
         specifier: ^3.10.6
         version: 3.10.6
+      neo4j-driver:
+        specifier: ^5.26.0
+        version: 5.26.0
       next:
         specifier: 14.2.15
         version: 14.2.15(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3351,6 +3354,15 @@ packages:
   negotiator@0.6.4:
     resolution: {integrity: sha512-myRT3DiWPHqho5PrJaIRyaMv2kgYf0mUVgBNOYMuCH5Ki1yEiQaf/ZJuQ62nvpc44wL5WDbTX7yGJi1Neevw8w==}
     engines: {node: '>= 0.6'}
+
+  neo4j-driver-bolt-connection@5.26.0:
+    resolution: {integrity: sha512-Tq548RNZJoQdmZhTRcUxDntU1DkNhhKF8oWWuCQ7OtX20EIYpIgVkQYWJu75bSiYyUGxmuSk4U02oXNBdggjgg==}
+
+  neo4j-driver-core@5.26.0:
+    resolution: {integrity: sha512-S3nHbqGuKPktWkRGenfx8Dt4MuqqrrUQjo4COhRj9r9P6WOjd0jzF/wyZb8H44pW5Qx/gmqn9B3If+7gfiaRmw==}
+
+  neo4j-driver@5.26.0:
+    resolution: {integrity: sha512-cQEzXHmUxWb2uBOqsvjs3/GxyVtOgP6WsOpozqTvI47Zzopzw/4b/E4uCJQR5bIn1UXdcUfZKJ60jOmAzEvM8A==}
 
   netmask@2.0.2:
     resolution: {integrity: sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==}
@@ -6709,7 +6721,6 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
-    optional: true
 
   busboy@1.6.0:
     dependencies:
@@ -8440,6 +8451,20 @@ snapshots:
   negotiator@0.6.3: {}
 
   negotiator@0.6.4: {}
+
+  neo4j-driver-bolt-connection@5.26.0:
+    dependencies:
+      buffer: 6.0.3
+      neo4j-driver-core: 5.26.0
+      string_decoder: 1.3.0
+
+  neo4j-driver-core@5.26.0: {}
+
+  neo4j-driver@5.26.0:
+    dependencies:
+      neo4j-driver-bolt-connection: 5.26.0
+      neo4j-driver-core: 5.26.0
+      rxjs: 7.8.1
 
   netmask@2.0.2: {}
 

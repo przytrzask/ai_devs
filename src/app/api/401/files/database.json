@@ -1,0 +1,489 @@
+{
+  "users": [
+    {
+      "userId": 1,
+      "name": "Adrian",
+      "knows": [5, 20, 54]
+    },
+    {
+      "userId": 2,
+      "name": "Monika",
+      "knows": [14, 45]
+    },
+    {
+      "userId": 3,
+      "name": "Azazel",
+      "knows": [6, 31, 77]
+    },
+    {
+      "userId": 4,
+      "name": "Robert",
+      "knows": [2, 34, 83]
+    },
+    {
+      "userId": 5,
+      "name": "Aleksandra",
+      "knows": []
+    },
+    {
+      "userId": 6,
+      "name": "Michał",
+      "knows": [95]
+    },
+    {
+      "userId": 7,
+      "name": "Katarzyna",
+      "knows": [51]
+    },
+    {
+      "userId": 8,
+      "name": "Mateusz",
+      "knows": [17, 20, 79]
+    },
+    {
+      "userId": 9,
+      "name": "Zofia",
+      "knows": [29]
+    },
+    {
+      "userId": 10,
+      "name": "Jan",
+      "knows": []
+    },
+    {
+      "userId": 11,
+      "name": "Julia",
+      "knows": [21, 78]
+    },
+    {
+      "userId": 12,
+      "name": "Tomasz",
+      "knows": []
+    },
+    {
+      "userId": 13,
+      "name": "Anna",
+      "knows": [5, 24, 40, 75, 76]
+    },
+    {
+      "userId": 14,
+      "name": "Piotr",
+      "knows": [26, 67]
+    },
+    {
+      "userId": 15,
+      "name": "Natalia",
+      "knows": []
+    },
+    {
+      "userId": 16,
+      "name": "Paweł",
+      "knows": []
+    },
+    {
+      "userId": 17,
+      "name": "Maria",
+      "knows": [21, 30, 42]
+    },
+    {
+      "userId": 18,
+      "name": "Krzysztof",
+      "knows": [83, 95]
+    },
+    {
+      "userId": 19,
+      "name": "Emilia",
+      "knows": [87]
+    },
+    {
+      "userId": 20,
+      "name": "Marcin",
+      "knows": [40, 86]
+    },
+    {
+      "userId": 21,
+      "name": "Maja",
+      "knows": []
+    },
+    {
+      "userId": 22,
+      "name": "Łukasz",
+      "knows": [22, 28, 92]
+    },
+    {
+      "userId": 23,
+      "name": "Amelia",
+      "knows": []
+    },
+    {
+      "userId": 24,
+      "name": "Grzegorz",
+      "knows": [2]
+    },
+    {
+      "userId": 25,
+      "name": "Alicja",
+      "knows": [15, 31]
+    },
+    {
+      "userId": 26,
+      "name": "Adam",
+      "knows": []
+    },
+    {
+      "userId": 27,
+      "name": "Martyna",
+      "knows": [75]
+    },
+    {
+      "userId": 28,
+      "name": "Rafał",
+      "knows": [3, 6, 17, 83, 84]
+    },
+    {
+      "userId": 29,
+      "name": "Ewelina",
+      "knows": [87]
+    },
+    {
+      "userId": 30,
+      "name": "Maciej",
+      "knows": []
+    },
+    {
+      "userId": 31,
+      "name": "Zygfryd",
+      "knows": [3, 7, 66]
+    },
+    {
+      "userId": 32,
+      "name": "Jakub",
+      "knows": [97]
+    },
+    {
+      "userId": 33,
+      "name": "Agnieszka",
+      "knows": [8]
+    },
+    {
+      "userId": 34,
+      "name": "Hubert",
+      "knows": [51, 63]
+    },
+    {
+      "userId": 35,
+      "name": "Gabriela",
+      "knows": []
+    },
+    {
+      "userId": 36,
+      "name": "Dawid",
+      "knows": [59]
+    },
+    {
+      "userId": 37,
+      "name": "Lena",
+      "knows": [31, 68, 80]
+    },
+    {
+      "userId": 38,
+      "name": "Szymon",
+      "knows": [27, 78]
+    },
+    {
+      "userId": 39,
+      "name": "Barbara",
+      "knows": [46]
+    },
+    {
+      "userId": 40,
+      "name": "Oliwier",
+      "knows": [14, 39, 47, 52, 80, 82]
+    },
+    {
+      "userId": 41,
+      "name": "Nikola",
+      "knows": [75]
+    },
+    {
+      "userId": 42,
+      "name": "Wojciech",
+      "knows": [11, 20, 30, 72]
+    },
+    {
+      "userId": 43,
+      "name": "Karolina",
+      "knows": [92]
+    },
+    {
+      "userId": 44,
+      "name": "Wiktor",
+      "knows": [6, 95]
+    },
+    {
+      "userId": 45,
+      "name": "Kinga",
+      "knows": [18, 54, 62]
+    },
+    {
+      "userId": 46,
+      "name": "Artur",
+      "knows": [36]
+    },
+    {
+      "userId": 47,
+      "name": "Oliwia",
+      "knows": [95]
+    },
+    {
+      "userId": 48,
+      "name": "Patryk",
+      "knows": [52]
+    },
+    {
+      "userId": 49,
+      "name": "Joanna",
+      "knows": [16, 18, 65]
+    },
+    {
+      "userId": 50,
+      "name": "Damian",
+      "knows": [34]
+    },
+    {
+      "userId": 51,
+      "name": "Patrycja",
+      "knows": [9, 53, 70]
+    },
+    {
+      "userId": 52,
+      "name": "Filip",
+      "knows": [63]
+    },
+    {
+      "userId": 53,
+      "name": "Sandra",
+      "knows": []
+    },
+    {
+      "userId": 54,
+      "name": "Sebastian",
+      "knows": [20]
+    },
+    {
+      "userId": 55,
+      "name": "Izabela",
+      "knows": []
+    },
+    {
+      "userId": 56,
+      "name": "Daniel",
+      "knows": [19, 21]
+    },
+    {
+      "userId": 57,
+      "name": "Beata",
+      "knows": [43, 62]
+    },
+    {
+      "userId": 58,
+      "name": "Konrad",
+      "knows": [15]
+    },
+    {
+      "userId": 59,
+      "name": "Klaudia",
+      "knows": [25, 37, 70]
+    },
+    {
+      "userId": 60,
+      "name": "Bartłomiej",
+      "knows": [5]
+    },
+    {
+      "userId": 61,
+      "name": "Renata",
+      "knows": []
+    },
+    {
+      "userId": 62,
+      "name": "Igor",
+      "knows": [54]
+    },
+    {
+      "userId": 63,
+      "name": "Edyta",
+      "knows": [29, 80]
+    },
+    {
+      "userId": 64,
+      "name": "Kamil",
+      "knows": [73]
+    },
+    {
+      "userId": 65,
+      "name": "Magdalena",
+      "knows": [89]
+    },
+    {
+      "userId": 66,
+      "name": "Bartosz",
+      "knows": []
+    },
+    {
+      "userId": 67,
+      "name": "Małgorzata",
+      "knows": []
+    },
+    {
+      "userId": 68,
+      "name": "Witold",
+      "knows": [55, 91]
+    },
+    {
+      "userId": 69,
+      "name": "Justyna",
+      "knows": []
+    },
+    {
+      "userId": 70,
+      "name": "Marian",
+      "knows": []
+    },
+    {
+      "userId": 71,
+      "name": "Iwona",
+      "knows": [3]
+    },
+    {
+      "userId": 72,
+      "name": "Jerzy",
+      "knows": [6, 74, 84]
+    },
+    {
+      "userId": 73,
+      "name": "Dorota",
+      "knows": [3, 14]
+    },
+    {
+      "userId": 74,
+      "name": "Leszek",
+      "knows": []
+    },
+    {
+      "userId": 75,
+      "name": "Zuzanna",
+      "knows": [8, 28]
+    },
+    {
+      "userId": 76,
+      "name": "Cezary",
+      "knows": [27, 28, 75]
+    },
+    {
+      "userId": 77,
+      "name": "Aleksander",
+      "knows": [39, 73]
+    },
+    {
+      "userId": 78,
+      "name": "Oskar",
+      "knows": [71]
+    },
+    {
+      "userId": 79,
+      "name": "Halina",
+      "knows": [11, 62]
+    },
+    {
+      "userId": 80,
+      "name": "Leon",
+      "knows": [10]
+    },
+    {
+      "userId": 81,
+      "name": "Elżbieta",
+      "knows": [51]
+    },
+    {
+      "userId": 82,
+      "name": "Kazimierz",
+      "knows": [26, 33, 47]
+    },
+    {
+      "userId": 83,
+      "name": "Weronika",
+      "knows": [2, 12, 82]
+    },
+    {
+      "userId": 84,
+      "name": "Andrzej",
+      "knows": [18, 74]
+    },
+    {
+      "userId": 85,
+      "name": "Grażyna",
+      "knows": [29]
+    },
+    {
+      "userId": 86,
+      "name": "Jacek",
+      "knows": [93]
+    },
+    {
+      "userId": 87,
+      "name": "Michalina",
+      "knows": []
+    },
+    {
+      "userId": 88,
+      "name": "Przemysław",
+      "knows": [32, 71]
+    },
+    {
+      "userId": 89,
+      "name": "Hanna",
+      "knows": [85]
+    },
+    {
+      "userId": 90,
+      "name": "Bogdan",
+      "knows": []
+    },
+    {
+      "userId": 91,
+      "name": "Sylwia",
+      "knows": [57, 65, 82]
+    },
+    {
+      "userId": 92,
+      "name": "Borys",
+      "knows": [51]
+    },
+    {
+      "userId": 93,
+      "name": "Ludwika",
+      "knows": [27, 56]
+    },
+    {
+      "userId": 94,
+      "name": "Norbert",
+      "knows": [37]
+    },
+    {
+      "userId": 95,
+      "name": "Roksana",
+      "knows": [17, 21, 40]
+    },
+    {
+      "userId": 96,
+      "name": "Fryderyk",
+      "knows": [4, 85]
+    },
+    {
+      "userId": 97,
+      "name": "Jolanta",
+      "knows": [84]
+    }
+  ]
+}

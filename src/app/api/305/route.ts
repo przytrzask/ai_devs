@@ -1,121 +1,192 @@
 import { Console, Effect, pipe } from "effect";
 
 import { openai } from "@ai-sdk/openai";
-import { generateText, tool } from "ai";
+import { generateText } from "ai";
 
 import { z } from "zod";
 import { sendReport } from "@/app/services/sendReport";
+import fs from "node:fs";
 
 const url = "https://centrala.ag3nts.org/apidb";
 
+import neo4j from "neo4j-driver";
+import { readFile } from "@/app/services/transcript";
+import { toJSON } from "../302/utils";
+
+const driver = neo4j.driver(
+  "neo4j://localhost:7687",
+  neo4j.auth.basic("neo4j", "aRdPb6xh")
+);
+
 const AI_DEVS_API_KEY = process.env.AI_DEVS_API_KEY;
 
-const prompt = `You are a detective trying to locate Barbara Zawadzka. Follow these steps carefully:
+const prompt = `
+<system>
+  You are a specialized SQL query assistant focused on analyzing user data and relationships in the datacenter management system.
 
-1. First, read Barbara's note from https://centrala.ag3nts.org/dane/barbara.txt
-<note>
-Podczas pobytu w Krakowie w 2019 roku, Barbara Zawadzka poznała swojego ówczesnego narzeczonego, a obecnie męża, Aleksandra Ragowskiego. Tam też poznali osobę prawdopodobnie powiązaną z ruchem oporu, której dane nie są nam znane. Istnieje podejrzenie, że już wtedy pracowali oni nad planami ograniczenia rozwoju sztucznej inteligencji, tłumacząc to względami bezpieczeństwa. Tajemniczy osobnik zajmował się także organizacją spotkań mających na celu podnoszenie wiedzy na temat wykorzystania sztucznej inteligencji przez programistów. Na spotkania te uczęszczała także Barbara.
+  <available_commands>
+    - show tables: Returns complete list of database tables
+    - create table TABLE_NAME: Returns detailed structure for specified table
+  </available_commands>
 
-W okolicach 2021 roku Rogowski udał się do Warszawy celem spotkania z profesorem Andrzejem Majem. Prawdopodobnie nie zabrał ze sobą żony, a cel ich spotkania nie jest do końca jasny.
+  <task_objective>
+  Retrieve all users and map their direct connections where a connection represents that one user knows another user.
+  The connections table uses source_id and target_id to represent these relationships.
+  </task_objective>
 
-Podczas pobytu w Warszawie, w instytucie profesora doszło do incydentu, w wyniku którego, jeden z laborantów - Rafał Bomba - zaginął. Niepotwierdzone źródła informacji podają jednak, że Rafał spędził około 2 lata, wynajmując pokój w pewnym hotelu. Dlaczego zniknął?  Przed kim się ukrywał? Z kim kontaktował się przez ten czas i dlaczego ujawnił się po tym czasie? Na te pytania nie znamy odpowiedzi, ale agenci starają się uzupełnić brakujące informacje.
+  <connection_structure>
+  The "connections" table contains one-way relationships:
+  - source_id: The ID of the user who knows someone
+  - target_id: The ID of the user who is known
+  Example: A row with (17,29) means user ID=17 knows user ID=29
+   - one-way relationship. That is, if Marian knows Stefan, you will probably not find information in the database that Stefan knows Marian. You don't need to handle such a situation. To further simplify the analysis, people's names are unique.
+  </connection_structure>
 
-Istnieje podejrzenie, że Rafał mógł być powiązany z ruchem oporu. Prawdopodobnie przekazał on notatki profesora Maja w ręce Ragowskiego, a ten po powrocie do Krakowa mógł przekazać je swojej żonie. Z tego powodu uwaga naszej jednostki skupia się na odnalezieniu Barbary.
+  <execution_steps>
+  1. Database Exploration:
+     - Execute: "show tables"
+     - Focus on users table and connections table
+  
+  2. Schema Analysis:
+     - Execute: "create table users"
+     - Execute: "create table connections"
+     - Map the relationship structure between tables
+  
+  3. Query Construction:
+     - Build SQL queries to:
+       * Get all users
+       * For each user, find all their connections (who they know)
+       * Join the data to get complete user profiles with their connections
+  
+  4. Result Formatting:
+     - Return results in strict JSON format:
+     {
+       "users": [{
+         "userId": number,
+         "name": string,
+         "knows": Array<userId>  // Array of user IDs this person knows
+       }]
+     }
+  </execution_steps>
 
-Aktualne miejsce pobytu Barbary Zawadzkiej nie jest znane. Przypuszczamy jednak, że nie opuściła ona kraju.
-</note>
+  <technical_requirements>
+  - ALWAYS return results in strict JSON format
+  - DON'T ADD ANY comments in the final JSON result
+  - Use JOIN operations to connect users with their relationships
+  - Handle cases where users might have no connections
+  - Ensure all connections are properly mapped
+  - Use the provided fetch function for all database queries
+  </technical_requirements>
 
-2. Extract all person names and city names mentioned in the note
+  Begin by exploring the database structure to understand the user and connection tables.
+</system>
+`;
 
-1. For each person name found:
-   - Search the people  by making a getPeople request with {"query": "[PERSON_NAME]"}
-   - Note any cities or additional persons mentioned in the results
-2. For each city name found:
-   - Search the places  by making a getPlaces request with {"query": "[CITY_NAME]"}
-   - Note any persons mentioned in the results
-3. Continue this process recursively with any new names or cities discovered
-4. Search all people by name 
-5. dont skip any name 
-6. search all places by name
-7. When you find current Barbara Zawadzka's location, return it in this format:
-   \`\`\`json
-   {"city": "[CITY_NAME]"}
-   \`\`\`
+type JSONData = {
+  users: {
+    userId: number;
+    name: string;
+    knows: number[];
+  }[];
+};
 
-Important:
-- MOST IMPORTANT we are looking for CURRENT city where Barbara Zawadzka is NOW
-- QUERY ONE WORD ONLY AT TIME
-- QUERY ALWAYS USING CAPITAL LETTERS 
-- QUERY ALWAYS WITHOUTH SPECIAL CHARACTERS 
-- IT MAY NOT BE DIRECTLY SAID YOU MUST DEDUCE IT FROM THE CONTEXT
-- Use simple name/city queries without any special characters
-- Keep track of all connections between people and places
-- Look for patterns that might reveal Barbara's location
-- Put all the data together and fill in the missing information.
-- Remember that some data might be incomplete or missing
-- check FROMBORK and KONIN as well
-- check person GLITCH - result of place KONIN search
+const importData = (jsonData: JSONData) => {
+  const session = driver.session();
 
-Begin your investigation and report your findings step by step. For each step, explain your reasoning and what new information you've discovered.`;
+  return Effect.tryPromise({
+    try: async () => {
+      // Iterate Through Users
+      for (const user of jsonData.users) {
+        await session.run(
+          `
+          MERGE (u:Person {userId: $userId})
+          ON CREATE SET u.name = $name
+          `,
+          { userId: user.userId, name: user.name }
+        );
+      }
+
+      // Create Relationships
+      for (const user of jsonData.users) {
+        for (const knowsId of user.knows) {
+          await session.run(
+            `
+            MATCH (u:Person {userId: $userId}), (k:Person {userId: $knowsId})
+            MERGE (u)-[:KNOWS]->(k)
+            `,
+            { userId: user.userId, knowsId: knowsId }
+          );
+        }
+      }
+      session.close();
+      return "Data import complete!";
+    },
+    catch: (error) => {
+      session.close();
+      console.error("Error importing data:", error);
+      return Effect.fail(error);
+    },
+  });
+};
+
+const getShortestPath = (fromUser: string, toUser: string) => {
+  const session = driver.session();
+  return Effect.tryPromise({
+    try: async () => {
+      const result = await session.run(
+        `
+        MATCH p = shortestPath((from:Person {name: $fromUser})-[*]-(to:Person {name: $toUser}))
+        RETURN p
+        `,
+        { fromUser, toUser }
+      );
+
+      console.log({ result });
+      const path = result.records[0].get("p");
+
+      const nodes = path.segments.map(
+        (segment) => segment.start.properties.name
+      ) as string[];
+
+      nodes.push(path.end.properties.name);
+
+      const stringifiedNodes = nodes.join(",");
+
+      return stringifiedNodes;
+    },
+    catch: (error) => {
+      console.error("Error getting shortest path:", error);
+      return Effect.fail(error);
+    },
+  });
+};
 
 const askAgent = (prompt: string) =>
   Effect.tryPromise({
     try: async () => {
       const { steps } = await generateText({
-        model: openai("gpt-4o"),
-        maxSteps: 100,
-        temperature: 1,
+        model: openai("gpt-4o-mini"),
+        maxSteps: 10,
         prompt,
-        onStepFinish: (step) => {
-          console.log(step.text);
-        },
         tools: {
-          getPeople: {
-            description: "Make an HTTP POST request to find people",
+          makeRequest: {
+            description: "Make an HTTP POST request to the database API",
             parameters: z.object({
-              query: z.string().describe(""),
+              query: z.string().describe("The SQL query to execute"),
             }),
             execute: async ({ query }) => {
-              const response = await fetch(
-                "https://centrala.ag3nts.org/people",
-                {
-                  method: "POST",
-                  body: JSON.stringify({
-                    apikey: AI_DEVS_API_KEY,
-                    query,
-                  }),
-                }
-              );
+              const response = await fetch(url, {
+                method: "POST",
+                body: JSON.stringify({
+                  task: "database",
+                  apikey: AI_DEVS_API_KEY,
+                  query,
+                }),
+              });
 
               const data = await response.json();
 
-              console.log("getPeopleData", data);
-
-              return data;
-            },
-          },
-          getPlaces: {
-            description: "Make an HTTP POST request to find places",
-            parameters: z.object({
-              query: z.string().describe(""),
-            }),
-            execute: async ({ query }) => {
-              console.log("getPlaces", query);
-
-              const response = await fetch(
-                "https://centrala.ag3nts.org/places",
-                {
-                  method: "POST",
-                  body: JSON.stringify({
-                    apikey: AI_DEVS_API_KEY,
-                    query,
-                  }),
-                }
-              );
-
-              const data = await response.json();
-
-              console.log("getPlacesData", data);
+              console.log({ data: data.reply, query });
 
               return data;
             },
@@ -127,29 +198,47 @@ const askAgent = (prompt: string) =>
 
       const match = lastStep.match(/```json\n(.*)\n```/s);
 
-      console.log({ lastStep });
-
       if (match) {
-        return JSON.parse(match[1]).city;
+        return JSON.parse(match[0]);
       }
 
       return lastStep;
     },
-    catch: (e) => Effect.fail(e),
+    catch: (e) => {
+      console.log({
+        e,
+      });
+      return Effect.fail(e);
+    },
   });
 
-const programDate = (date: string) =>
+const writeFile = (path: string, data: string) =>
+  Effect.async<void, NodeJS.ErrnoException | null>((resume) => {
+    console.log({ path, data });
+
+    fs.writeFile(path, data, (error) => {
+      resume(error ? Effect.fail(error) : Effect.succeed("File written"));
+    });
+  });
+
+const notesPath = process.cwd() + "/src/app/api/305/files/database.json";
+
+const programDatabaseSearch = () =>
   pipe(
-    askAgent(prompt),
+    // readFile(`${process.cwd()}/src/app/api/305/files`, "database.json"),
+    // Effect.flatMap(toJSON),
+    // Effect.flatMap(importData)
+    // askAgent(prompt),
+    // Effect.flatMap((data) => writeFile(notesPath, data))
+
+    // Effect.flatMap((data) => sendReport(data, "database"))
+    getShortestPath("Rafał", "Barbara"),
     Effect.tap(Console.log),
-    Effect.flatMap((data) => sendReport(data, "loop"))
+    Effect.flatMap((data) => sendReport(data, "connections"))
   );
 
 export async function GET() {
-  return Effect.runPromise(
-    // processDocuments(REPORTS_PATH)
-    programDate("")
-  ).then((data) => {
+  return Effect.runPromise(programDatabaseSearch()).then((data) => {
     return new Response(JSON.stringify({ data }), {
       status: 200,
     });

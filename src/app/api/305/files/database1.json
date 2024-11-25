@@ -1,0 +1,484 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "connections": [5, 20, 54],
+      "name": "Adrian"
+    },
+    {
+      "id": 2,
+      "connections": [14, 45],
+      "name": "Monika"
+    },
+    {
+      "id": 4,
+      "connections": [2, 34, 83],
+      "name": "Robert"
+    },
+    {
+      "id": 5,
+      "connections": [1, 13, 40],
+      "name": "Aleksandra"
+    },
+    {
+      "id": 6,
+      "connections": [3, 31, 37],
+      "name": "Michał"
+    },
+    {
+      "id": 7,
+      "connections": [51],
+      "name": "Katarzyna"
+    },
+    {
+      "id": 8,
+      "connections": [17, 20, 79],
+      "name": "Mateusz"
+    },
+    {
+      "id": 9,
+      "connections": [29],
+      "name": "Zofia"
+    },
+    {
+      "id": 10,
+      "connections": [80],
+      "name": "Jan"
+    },
+    {
+      "id": 11,
+      "connections": [21, 78],
+      "name": "Julia"
+    },
+    {
+      "id": 12,
+      "connections": [2],
+      "name": "Tomasz"
+    },
+    {
+      "id": 13,
+      "connections": [5, 24, 40, 75, 76],
+      "name": "Anna"
+    },
+    {
+      "id": 14,
+      "connections": [26, 67],
+      "name": "Piotr"
+    },
+    {
+      "id": 15,
+      "connections": [16],
+      "name": "Natalia"
+    },
+    {
+      "id": 16,
+      "connections": [1],
+      "name": "Paweł"
+    },
+    {
+      "id": 17,
+      "connections": [21, 30, 42],
+      "name": "Maria"
+    },
+    {
+      "id": 18,
+      "connections": [83, 95],
+      "name": "Krzysztof"
+    },
+    {
+      "id": 19,
+      "connections": [87],
+      "name": "Emilia"
+    },
+    {
+      "id": 20,
+      "connections": [40, 86],
+      "name": "Marcin"
+    },
+    {
+      "id": 21,
+      "connections": [1, 11],
+      "name": "Maja"
+    },
+    {
+      "id": 22,
+      "connections": [22, 28, 92],
+      "name": "Łukasz"
+    },
+    {
+      "id": 23,
+      "connections": [],
+      "name": "Amelia"
+    },
+    {
+      "id": 24,
+      "connections": [2],
+      "name": "Grzegorz"
+    },
+    {
+      "id": 25,
+      "connections": [15, 31],
+      "name": "Alicja"
+    },
+    {
+      "id": 26,
+      "connections": [],
+      "name": "Adam"
+    },
+    {
+      "id": 27,
+      "connections": [75],
+      "name": "Martyna"
+    },
+    {
+      "id": 28,
+      "connections": [3, 6, 17, 83, 84],
+      "name": "Ewelina"
+    },
+    {
+      "id": 29,
+      "connections": [87],
+      "name": "Maciej"
+    },
+    {
+      "id": 30,
+      "connections": [],
+      "name": "Zygfryd"
+    },
+    {
+      "id": 31,
+      "connections": [3, 7, 66],
+      "name": "Jakub"
+    },
+    {
+      "id": 32,
+      "connections": [97],
+      "name": "Agnieszka"
+    },
+    {
+      "id": 33,
+      "connections": [8],
+      "name": "Hubert"
+    },
+    {
+      "id": 34,
+      "connections": [51],
+      "name": "Gabriela"
+    },
+    {
+      "id": 35,
+      "connections": [],
+      "name": "Dawid"
+    },
+    {
+      "id": 36,
+      "connections": [59],
+      "name": "Lena"
+    },
+    {
+      "id": 37,
+      "connections": [31, 68, 80],
+      "name": "Szymon"
+    },
+    {
+      "id": 38,
+      "connections": [27, 78],
+      "name": "Barbara"
+    },
+    {
+      "id": 39,
+      "connections": [14, 39, 47, 52, 80, 82],
+      "name": "Oliwier"
+    },
+    {
+      "id": 40,
+      "connections": [14, 39, 47, 52, 80, 82],
+      "name": "Nikola"
+    },
+    {
+      "id": 41,
+      "connections": [75],
+      "name": "Wojciech"
+    },
+    {
+      "id": 42,
+      "connections": [11, 20, 30, 72],
+      "name": "Karolina"
+    },
+    {
+      "id": 43,
+      "connections": [92],
+      "name": "Wiktor"
+    },
+    {
+      "id": 44,
+      "connections": [6, 95],
+      "name": "Kinga"
+    },
+    {
+      "id": 45,
+      "connections": [18, 54, 62],
+      "name": "Artur"
+    },
+    {
+      "id": 46,
+      "connections": [36],
+      "name": "Oliwia"
+    },
+    {
+      "id": 47,
+      "connections": [95],
+      "name": "Patryk"
+    },
+    {
+      "id": 48,
+      "connections": [52],
+      "name": "Joanna"
+    },
+    {
+      "id": 49,
+      "connections": [16, 18, 65],
+      "name": "Damian"
+    },
+    {
+      "id": 50,
+      "connections": [34],
+      "name": "Filip"
+    },
+    {
+      "id": 51,
+      "connections": [9, 53, 70],
+      "name": "Sandra"
+    },
+    {
+      "id": 52,
+      "connections": [63],
+      "name": "Sebastian"
+    },
+    {
+      "id": 53,
+      "connections": [],
+      "name": "Izabela"
+    },
+    {
+      "id": 54,
+      "connections": [20],
+      "name": "Daniel"
+    },
+    {
+      "id": 55,
+      "connections": [],
+      "name": "Beata"
+    },
+    {
+      "id": 56,
+      "connections": [19, 21],
+      "name": "Konrad"
+    },
+    {
+      "id": 57,
+      "connections": [43, 62],
+      "name": "Klaudia"
+    },
+    {
+      "id": 58,
+      "connections": [15],
+      "name": "Bartłomiej"
+    },
+    {
+      "id": 59,
+      "connections": [25, 37, 70],
+      "name": "Renata"
+    },
+    {
+      "id": 60,
+      "connections": [5],
+      "name": "Edyta"
+    },
+    {
+      "id": 61,
+      "connections": [],
+      "name": "Kamil"
+    },
+    {
+      "id": 62,
+      "connections": [],
+      "name": "Magdalena"
+    },
+    {
+      "id": 63,
+      "connections": [29, 80],
+      "name": "Bartosz"
+    },
+    {
+      "id": 64,
+      "connections": [],
+      "name": "Małgorzata"
+    },
+    {
+      "id": 65,
+      "connections": [89],
+      "name": "Witold"
+    },
+    {
+      "id": 66,
+      "connections": [],
+      "name": "Justyna"
+    },
+    {
+      "id": 67,
+      "connections": [],
+      "name": "Marian"
+    },
+    {
+      "id": 68,
+      "connections": [],
+      "name": "Iwona"
+    },
+    {
+      "id": 69,
+      "connections": [],
+      "name": "Jerzy"
+    },
+    {
+      "id": 70,
+      "connections": [],
+      "name": "Dorota"
+    },
+    {
+      "id": 71,
+      "connections": [],
+      "name": "Leszek"
+    },
+    {
+      "id": 72,
+      "connections": [],
+      "name": "Zuzanna"
+    },
+    {
+      "id": 73,
+      "connections": [],
+      "name": "Cezary"
+    },
+    {
+      "id": 74,
+      "connections": [],
+      "name": "Aleksander"
+    },
+    {
+      "id": 75,
+      "connections": [],
+      "name": "Oskar"
+    },
+    {
+      "id": 76,
+      "connections": [],
+      "name": "Halina"
+    },
+    {
+      "id": 77,
+      "connections": [],
+      "name": "Leon"
+    },
+    {
+      "id": 78,
+      "connections": [],
+      "name": "Elżbieta"
+    },
+    {
+      "id": 79,
+      "connections": [],
+      "name": "Kazimierz"
+    },
+    {
+      "id": 80,
+      "connections": [],
+      "name": "Weronika"
+    },
+    {
+      "id": 81,
+      "connections": [],
+      "name": "Andrzej"
+    },
+    {
+      "id": 82,
+      "connections": [],
+      "name": "Grażyna"
+    },
+    {
+      "id": 83,
+      "connections": [],
+      "name": "Jacek"
+    },
+    {
+      "id": 84,
+      "connections": [],
+      "name": "Michalina"
+    },
+    {
+      "id": 85,
+      "connections": [],
+      "name": "Przemysław"
+    },
+    {
+      "id": 86,
+      "connections": [],
+      "name": "Hanna"
+    },
+    {
+      "id": 87,
+      "connections": [],
+      "name": "Bogdan"
+    },
+    {
+      "id": 88,
+      "connections": [],
+      "name": "Borys"
+    },
+    {
+      "id": 89,
+      "connections": [],
+      "name": "Ludwika"
+    },
+    {
+      "id": 90,
+      "connections": [],
+      "name": "Norbert"
+    },
+    {
+      "id": 91,
+      "connections": [],
+      "name": "Roksana"
+    },
+    {
+      "id": 92,
+      "connections": [],
+      "name": "Fryderyk"
+    },
+    {
+      "id": 93,
+      "connections": [],
+      "name": "Jolanta"
+    },
+    {
+      "id": 94,
+      "connections": [],
+      "name": "Zuzanna"
+    },
+    {
+      "id": 95,
+      "connections": [],
+      "name": "Cezary"
+    },
+    {
+      "id": 96,
+      "connections": [],
+      "name": "Aleksander"
+    },
+    {
+      "id": 97,
+      "connections": [],
+      "name": "Oskar"
+    }
+  ]
+}

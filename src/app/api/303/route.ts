@@ -1,7 +1,7 @@
 import { Console, Effect, pipe } from "effect";
 
 import { openai } from "@ai-sdk/openai";
-import { generateText, tool } from "ai";
+import { generateText } from "ai";
 
 import { z } from "zod";
 import { sendReport } from "@/app/services/sendReport";
