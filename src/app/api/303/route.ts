@@ -49,6 +49,7 @@ const prompt = `
   - Wait for and validate each response before proceeding
   - Handle potential errors gracefully
   - Ensure proper JOIN conditions if multiple tables are needed
+  - after successful execution try to query for "443" or HTTPS 
   </technical_requirements>
 
   Begin by retrieving the table list to understand the database structure.
@@ -82,6 +83,8 @@ const askAgent = (prompt: string) =>
           },
         },
       });
+
+      console.log({ steps });
 
       const lastStep = steps[steps.length - 1].text;
 
